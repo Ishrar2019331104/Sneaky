@@ -55,6 +55,11 @@ public class TileManager
             e.printStackTrace();
         }
     }
+
+    /**
+     * loads worldMap from output.txt file.
+     * @param filePath
+     */
     public void loadMap(String filePath)
     {
         try
@@ -90,6 +95,11 @@ public class TileManager
             e.printStackTrace();
         }
     }
+
+    /**
+     * draws the map in a 50x50 space.
+     * @param graphics2D
+     */
     public void draw(Graphics2D graphics2D)
     {
         int worldCol = 0;

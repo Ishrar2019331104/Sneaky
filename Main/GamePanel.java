@@ -10,7 +10,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class GamePanel extends JPanel implements Runnable{
+public class GamePanel extends JPanel implements Runnable
+{
     // SCREEN SETTINGS
     BufferedImage image;
     final int originalTileSize = 16; // 16x16 tile - default size of everything - player, letter
@@ -32,7 +33,7 @@ public class GamePanel extends JPanel implements Runnable{
     int FPS = 60;
 
     TileManager tileManager = new TileManager(this);
-    KeyHandler keyHandler = new KeyHandler();
+    KeyHandler keyHandler = new KeyHandler(this);
 
     Sound music = new Sound();
     Sound soundEffect = new Sound();
@@ -44,7 +45,14 @@ public class GamePanel extends JPanel implements Runnable{
     Thread gameThread;
 
     public Player player = new Player(this, keyHandler);
-    public SuperObject obj[] = new SuperObject[21];
+    public SuperObject obj[] = new SuperObject[30];
+
+    // GAME STATE
+    public int gameState;
+    public final int playState = 1;
+    public final int pauseState = 2;
+    public final int titleState = 0;
+
 
 
 
@@ -60,18 +68,31 @@ public class GamePanel extends JPanel implements Runnable{
 
 
 
+
     }
+
+    /**
+     * loads the tiles and title screen after game loop starts.
+     */
     public void setupGame()
     {
         assetSetter.setObject();
+        gameState = titleState;
 
     }
+
+    /**
+     * Starts the game thread.
+     */
     public void startGameThread()
     {
         gameThread = new Thread(this);
         gameThread.start();
     }
 
+    /**
+     * Implements the thread by using System time to control loop. loop->update->loop->repaint->update->loop->
+     */
     @Override
     public void run()
     {
@@ -106,47 +127,83 @@ public class GamePanel extends JPanel implements Runnable{
 
 
     }
+    /**
+     * updates the playState using system time and does nothing if in pauseState
+     */
     public void update()
     {
+        if(gameState==playState)
+        {
+            player.update();
+        }
+        if(gameState==pauseState)
+        {
 
-        player.update();
+        }
+
 
     }
+
+    /**
+     * main base for drawing different components of the UI
+     * @param g - used to draw in GUI
+     */
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
         Graphics2D graphics2D = (Graphics2D) g;
-        // tile
-        tileManager.draw(graphics2D);
 
-        // object
-        for(int i=0;i<obj.length;i++)
+        // title state
+        if(gameState == titleState)
         {
-            if(obj[i]!=null)
-            {
-                obj[i].draw(graphics2D,this);
-            }
+            ui.draw(graphics2D);
         }
+        // others
+        // tile
 
-        // tile should be created before player.
+        else {
+            tileManager.draw(graphics2D);
 
-        player.draw(graphics2D);
-        ui.draw(graphics2D);
-        graphics2D.dispose();
+
+            // object
+            for (int i = 0; i < obj.length; i++) {
+                if (obj[i] != null) {
+                    obj[i].draw(graphics2D, this);
+                }
+            }
+
+            // tile should be created before player.
+
+            player.draw(graphics2D);
+            ui.draw(graphics2D);
+            graphics2D.dispose();
+        }
     }
 
+    /**
+     * Plays music
+     * @param i - based on this number, the method selects which music to play.
+     */
     public void playMusic(int i)
     {
         music.setFile(i);
         music.play();
-        music.loop();
+
 
     }
+    /**
+     * called to stop music.
+     */
     public void stopMusic()
     {
         music.stop();
 
     }
+
+    /**
+     * plays sound effects
+     * @param i - based on this number, the method selects which sound effect to play.
+     */
     public void playSoundEffect(int i)
     {
         soundEffect.setFile(i);

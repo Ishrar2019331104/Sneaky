@@ -35,13 +35,24 @@ public class Player extends Entity
         setDefaultValues();
         getPlayerImage();
     }
+
+    /**
+     * sets up default values of the player like speed, position, direction, life.
+     */
     public void setDefaultValues()
     {
         worldX = gamePanel.tileSize*25;
         worldY = gamePanel.tileSize*17;
         speed = 6;
         direction = "down";
+        // player status
+        maxLife = 3;
+        life = maxLife;
     }
+
+    /**
+     * loads sprite images
+     */
     public void getPlayerImage()
     {
         try{
@@ -61,6 +72,10 @@ public class Player extends Entity
             e.printStackTrace();
         }
     }
+
+    /**
+     * updates the player's positions based on keys pressed & checks for collisions with the tile & trees.
+     */
     public void update()
     {
         if (keyHandler.upPressed == true ||
@@ -107,7 +122,9 @@ public class Player extends Entity
                         break;
                 }
             }
-
+            /**
+             * this part is used to display sprite characters as if it were an animation. two images have been used for each positions - left, right, down, up - so they are swapped after sometime to make it look like they're moving
+             */
         spriteCounter++;
         if (spriteCounter > 12) {
             if (spriteNum == 1) {
@@ -119,6 +136,11 @@ public class Player extends Entity
         }
     }
     }
+
+    /**
+     *  the method checks if the sprite has collided the object , if so it makes changes to variables like speed, letter count, life.
+     * @param i - accepts an index that describes which object it is.
+     */
     public void pickUpObject(int i)
     {
         if(i!=999) {
@@ -163,47 +185,92 @@ public class Player extends Entity
                 case "A":
                     gamePanel.playSoundEffect(3);
                     speed-=2;
+                    life--;
                     gamePanel.obj[i] = null;
                     break;
                 case "B":
                     gamePanel.playSoundEffect(3);
                     speed-=2;
+                    life--;
                     gamePanel.obj[i] = null;
                     break;
                 case "E":
                     gamePanel.playSoundEffect(3);
                     speed-=2;
+                    life--;
                     gamePanel.obj[i] = null;
                     break;
                 case "F":
                     gamePanel.playSoundEffect(3);
                     speed-=2;
+                    life--;
                     gamePanel.obj[i] = null;
                     break;
                 case "G":
                     gamePanel.playSoundEffect(3);
                     speed-=2;
+                    life--;
                     gamePanel.obj[i] = null;
                     break;
                 case "H":
                     gamePanel.playSoundEffect(3);
                     speed-=2;
+                    life--;
                     gamePanel.obj[i] = null;
                     break;
                 case "S":
                     gamePanel.playSoundEffect(3);
                     speed-=2;
+                    life--;
                     gamePanel.obj[i] = null;
                     break;
                 case "T":
                     gamePanel.playSoundEffect(3);
                     speed-=2;
+                    life--;
                     gamePanel.obj[i] = null;
                     break;
 
                     case "K":
                         gamePanel.playSoundEffect(3);
                         speed-=2;
+                        life--;
+                    gamePanel.obj[i] = null;
+                    break;
+                case "I":
+                    gamePanel.playSoundEffect(3);
+                    speed-=2;
+                    life--;
+                    gamePanel.obj[i] = null;
+                    break;
+                case "J":
+                    gamePanel.playSoundEffect(3);
+                    speed-=2;
+                    life--;
+                    gamePanel.obj[i] = null;
+                    break;
+                case "M":
+                    gamePanel.playSoundEffect(3);
+                    speed-=2;
+                    life--;
+                    gamePanel.obj[i] = null;
+                    break;
+                case "N":
+                    gamePanel.playSoundEffect(3);
+                    speed-=2;
+                    life--;
+                    gamePanel.obj[i] = null;
+                    break;
+                case "Z":
+                    gamePanel.playSoundEffect(3);
+                    speed-=2;
+                    life--;
+                    gamePanel.obj[i] = null;
+                    break;
+                case "X":
+                    gamePanel.playSoundEffect(3);
+                    speed-=2;
+                    life--;
                     gamePanel.obj[i] = null;
                     break;
                 case "Insect":
@@ -214,18 +281,35 @@ public class Player extends Entity
                 case "Acid":
                     gamePanel.playSoundEffect(3);
                     speed-=2;
+                    life--;
                     gamePanel.obj[i] = null;
                     break;
 
             }
+            /**
+             * This part confirms that player has collected all the letters.
+             */
             if(hasC == 1 && hasL == 1 && hasO == 1 && hasU == 1 & hasD == 1)
             {
                 gamePanel.ui.gameFinished = true;
 //               gamePanel.stopMusic();
+                gamePanel.playSoundEffect(6);
+            }
+            /**
+             * This part redirects to end of game.
+             */
+            if(speed==0 || life==0)
+            {
+                gamePanel.ui.gameOver = true;
                 gamePanel.playSoundEffect(4);
             }
         }
     }
+
+    /**
+     * draws player characters based on the directions
+     * @param graphics2D
+     */
     public void draw(Graphics2D graphics2D)
     {
         BufferedImage image = null;

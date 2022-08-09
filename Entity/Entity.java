@@ -18,5 +18,9 @@ public class Entity
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
 
+    // PLAYER STATUS
+    public int maxLife;
+    public int life;
+
 
 }

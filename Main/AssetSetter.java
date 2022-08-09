@@ -8,6 +8,10 @@ public class AssetSetter{
     {
         this.gamePanel = gamePanel;
     }
+
+    /**
+     * places objects - letters, acid, insect on the map.
+     */
     public void setObject()
     {
         gamePanel.obj[0] = new A();
@@ -85,6 +89,35 @@ public class AssetSetter{
         gamePanel.obj[18] = new Acid();
         gamePanel.obj[18].worldX = 9 * gamePanel.tileSize;
         gamePanel.obj[18].worldY = 17 * gamePanel.tileSize;
+
+        gamePanel.obj[19] = new Acid();
+        gamePanel.obj[19].worldX = 9 * gamePanel.tileSize;
+        gamePanel.obj[19].worldY = 17 * gamePanel.tileSize;
+
+        gamePanel.obj[20] = new I();
+        gamePanel.obj[20].worldX = 13 * gamePanel.tileSize;
+        gamePanel.obj[20].worldY = 31 * gamePanel.tileSize;
+
+        gamePanel.obj[21] = new J();
+        gamePanel.obj[21].worldX = 20 * gamePanel.tileSize;
+        gamePanel.obj[21].worldY = 13 * gamePanel.tileSize;
+
+        gamePanel.obj[22] = new M();
+        gamePanel.obj[22].worldX = 10 * gamePanel.tileSize;
+        gamePanel.obj[22].worldY = 14 * gamePanel.tileSize;
+
+        gamePanel.obj[23] = new N();
+        gamePanel.obj[23].worldX = 7 * gamePanel.tileSize;
+        gamePanel.obj[23].worldY = 31 * gamePanel.tileSize;
+
+        gamePanel.obj[24] = new Z();
+        gamePanel.obj[24].worldX = 38 * gamePanel.tileSize;
+        gamePanel.obj[24].worldY = 31 * gamePanel.tileSize;
+
+        gamePanel.obj[25] = new X();
+        gamePanel.obj[25].worldX = 5 * gamePanel.tileSize;
+        gamePanel.obj[25].worldY = 31*gamePanel.tileSize;
+
 
 
 

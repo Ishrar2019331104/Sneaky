@@ -9,6 +9,11 @@ public class CollisionChecker
     {
         this.gamePanel = gamePanel;
     }
+
+    /**
+     * method to determine collision with tile - the topleft, top right, botton left and bottom right are decided to be the solid areas
+     * @param entity
+     */
     public void checkTile(Entity entity)
     {
         int entityLeftWorldX = entity.worldX + entity.solidArea.x;
