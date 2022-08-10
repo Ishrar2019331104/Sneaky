@@ -92,7 +92,7 @@ public class AssetSetter{
 
         gamePanel.obj[19] = new Acid();
         gamePanel.obj[19].worldX = 9 * gamePanel.tileSize;
-        gamePanel.obj[19].worldY = 17 * gamePanel.tileSize;
+        gamePanel.obj[19].worldY = 27 * gamePanel.tileSize;
 
         gamePanel.obj[20] = new I();
         gamePanel.obj[20].worldX = 13 * gamePanel.tileSize;
@@ -116,7 +116,7 @@ public class AssetSetter{
 
         gamePanel.obj[25] = new X();
         gamePanel.obj[25].worldX = 5 * gamePanel.tileSize;
-        gamePanel.obj[25].worldY = 31*gamePanel.tileSize;
+        gamePanel.obj[25].worldY = 31 *gamePanel.tileSize;
 
 
 

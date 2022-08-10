@@ -35,12 +35,26 @@ public class Player extends Entity
         setDefaultValues();
         getPlayerImage();
     }
+//    public void setDefaultPositions()
+//    {
+//        speed=6;
+//        worldX = gamePanel.tileSize*25;
+//        worldY = gamePanel.tileSize*17;
+//        direction = "down";
+//    }
+//    public void restoreLife()
+//    {
+//        life = maxLife;
+//
+//
+//    }
 
     /**
      * sets up default values of the player like speed, position, direction, life.
      */
     public void setDefaultValues()
     {
+
         worldX = gamePanel.tileSize*25;
         worldY = gamePanel.tileSize*17;
         speed = 6;
@@ -235,8 +249,8 @@ public class Player extends Entity
                         gamePanel.playSoundEffect(3);
                         speed-=2;
                         life--;
-                    gamePanel.obj[i] = null;
-                    break;
+                        gamePanel.obj[i] = null;
+                        break;
                 case "I":
                     gamePanel.playSoundEffect(3);
                     speed-=2;
@@ -289,9 +303,10 @@ public class Player extends Entity
             /**
              * This part confirms that player has collected all the letters.
              */
-            if(hasC == 1 && hasL == 1 && hasO == 1 && hasU == 1 & hasD == 1)
+            if(hasC == 1 && hasL == 1 && hasO == 1 && hasU == 1 && hasD == 1)
             {
-                gamePanel.ui.gameFinished = true;
+//                gamePanel.ui.gameFinished = true;
+                gamePanel.gameState = gamePanel.winState;
 //               gamePanel.stopMusic();
                 gamePanel.playSoundEffect(6);
             }
@@ -300,7 +315,7 @@ public class Player extends Entity
              */
             if(speed==0 || life==0)
             {
-                gamePanel.ui.gameOver = true;
+                gamePanel.gameState = gamePanel.gameOverState;
                 gamePanel.playSoundEffect(4);
             }
         }

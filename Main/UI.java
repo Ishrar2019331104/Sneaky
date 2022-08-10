@@ -62,42 +62,45 @@ public class UI {
      */
     public void draw(Graphics2D graphics2D)  {
 
-        if(gameFinished==true)
+//        if(gamePanel.gameState == gamePanel.winState)
+//        {
+//            drawWinState();
+////            graphics2D.setFont(arial_40);
+////            graphics2D.setColor(Color.white);
+////
+////            String text;
+////            int textLength;
+////            int x, y;
+////
+////            text = "You've got CLOUD!";
+////            textLength = (int)graphics2D.getFontMetrics().getStringBounds(text,graphics2D).getWidth();
+////            x = gamePanel.screenWidth/2 - textLength/2;
+////            y = gamePanel.screenHeight/2 - (gamePanel.tileSize*3);
+////
+////            graphics2D.drawString(text,x,y);
+////            gamePanel.gameThread = null;
+//        }
+//        else if(gameOver==true)
+//        {
+//            graphics2D.setFont(arial_40);
+//            graphics2D.setColor(Color.white);
+//
+//            String text;
+//            int textLength;
+//            int x, y;
+//
+//            text = "Game over!";
+//            textLength = (int)graphics2D.getFontMetrics().getStringBounds(text,graphics2D).getWidth();
+//            x = gamePanel.screenWidth/2 - textLength/2;
+//            y = gamePanel.screenHeight/2 - (gamePanel.tileSize*3);
+//
+//            graphics2D.drawString(text,x,y);
+//            gamePanel.gameThread = null;
+//        }
+
+         if (gamePanel.gameState== gamePanel.playState)
         {
-            graphics2D.setFont(arial_40);
-            graphics2D.setColor(Color.white);
 
-            String text;
-            int textLength;
-            int x, y;
-
-            text = "You've got CLOUD!";
-            textLength = (int)graphics2D.getFontMetrics().getStringBounds(text,graphics2D).getWidth();
-            x = gamePanel.screenWidth/2 - textLength/2;
-            y = gamePanel.screenHeight/2 - (gamePanel.tileSize*3);
-
-            graphics2D.drawString(text,x,y);
-            gamePanel.gameThread = null;
-        }
-        else if(gameOver==true)
-        {
-            graphics2D.setFont(arial_40);
-            graphics2D.setColor(Color.white);
-
-            String text;
-            int textLength;
-            int x, y;
-
-            text = "Game over!";
-            textLength = (int)graphics2D.getFontMetrics().getStringBounds(text,graphics2D).getWidth();
-            x = gamePanel.screenWidth/2 - textLength/2;
-            y = gamePanel.screenHeight/2 - (gamePanel.tileSize*3);
-
-            graphics2D.drawString(text,x,y);
-            gamePanel.gameThread = null;
-        }
-        else if (gamePanel.gameState== gamePanel.playState)
-        {
             graphics2D.setFont(arial_40);
             graphics2D.setColor(Color.white);
             graphics2D.drawImage(block1, gamePanel.tileSize / 2, gamePanel.tileSize / 2, gamePanel.tileSize, gamePanel.tileSize, null);
@@ -108,6 +111,7 @@ public class UI {
             graphics2D.drawImage(heartFull1, gamePanel.tileSize / 2 + 528, gamePanel.tileSize / 2, gamePanel.tileSize, gamePanel.tileSize,null);
             graphics2D.drawImage(heartFull2, gamePanel.tileSize / 2 + 576, gamePanel.tileSize / 2, gamePanel.tileSize, gamePanel.tileSize,null);
             graphics2D.drawImage(heartFull3, gamePanel.tileSize / 2 + 624, gamePanel.tileSize / 2, gamePanel.tileSize, gamePanel.tileSize,null);
+
 
             if (gamePanel.player.hasC > 0) {
                 block1 = null;
@@ -210,6 +214,10 @@ public class UI {
         }
         graphics2D.setFont(minecraft);
         graphics2D.setColor(Color.white);
+        if(gamePanel.gameState == gamePanel.winState)
+        {
+            drawWinState();
+        }
         if(gamePanel.gameState==gamePanel.playState)
         {
 
@@ -224,6 +232,92 @@ public class UI {
 
             drawTitleScreen();
         }
+        if(gamePanel.gameState==gamePanel.gameOverState)
+        {
+            drawGameOverScreen();
+        }
+
+
+
+
+    }
+    public void drawWinState()
+    {
+        graphics2D.setColor(new Color(0, 0, 0,150));
+        graphics2D.fillRect(0,0,gamePanel.screenWidth,gamePanel.screenHeight);
+        int x, y;
+        String text;
+        graphics2D.setFont(graphics2D.getFont().deriveFont(Font.PLAIN,50));
+
+        text = "You've got CLOUD!";
+        // SHADOW
+        graphics2D.setColor(Color.BLACK);
+        x = getXforCenteredText(text);
+        y = gamePanel.tileSize*4;
+        graphics2D.drawString(text,x,y);
+        // MAIN
+        graphics2D.setColor(Color.WHITE);
+        x = getXforCenteredText(text);
+        graphics2D.drawString(text,x-4,y-4);
+
+        graphics2D.setFont(graphics2D.getFont().deriveFont(Font.PLAIN,30));
+        text = "PLAY AGAIN";
+        x = getXforCenteredText(text);
+        y += gamePanel.tileSize*4;
+        graphics2D.drawString(text,x,y);
+        if (commandNumber == 0) {
+            graphics2D.drawString(">", x - 40, y);
+        }
+
+        graphics2D.setFont(graphics2D.getFont().deriveFont(Font.PLAIN,30));
+        text = "QUIT";
+        x = getXforCenteredText(text);
+        y += 55;
+        graphics2D.drawString(text,x,y);
+        if (commandNumber == 1) {
+            graphics2D.drawString(">", x - 40, y);
+        }
+
+    }
+    public void drawGameOverScreen()
+    {
+        graphics2D.setColor(new Color(0,0,0,150));
+        graphics2D.fillRect(0,0,gamePanel.screenWidth,gamePanel.screenHeight);
+        int x, y;
+        String text;
+        graphics2D.setFont(graphics2D.getFont().deriveFont(Font.BOLD,90));
+
+        text = "Game Over!";
+        // SHADOW
+        graphics2D.setColor(Color.black);
+        x = getXforCenteredText(text);
+        y = gamePanel.tileSize*4;
+        graphics2D.drawString(text,x,y);
+        // MAIN
+        graphics2D.setColor(Color.white);
+        x = getXforCenteredText(text);
+        graphics2D.drawString(text,x-4,y-4);
+
+        // RETRY
+
+        graphics2D.setFont(graphics2D.getFont().deriveFont(Font.PLAIN,30));
+        text = "PLAY AGAIN";
+        x = getXforCenteredText(text);
+        y += gamePanel.tileSize*4;
+        graphics2D.drawString(text,x,y);
+        if (commandNumber == 0) {
+            graphics2D.drawString(">", x - 40, y);
+        }
+
+        graphics2D.setFont(graphics2D.getFont().deriveFont(Font.PLAIN,30));
+        text = "QUIT";
+        x = getXforCenteredText(text);
+        y += 55;
+        graphics2D.drawString(text,x,y);
+        if (commandNumber == 1) {
+            graphics2D.drawString(">", x - 40, y);
+        }
+
 
 
 

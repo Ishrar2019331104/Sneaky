@@ -25,6 +25,75 @@ public class KeyHandler implements KeyListener
     public void keyPressed(KeyEvent e)
     {
         int code = e.getKeyCode();
+        if(gamePanel.gameState==gamePanel.winState)
+        {
+            if(code==KeyEvent.VK_UP)
+            {
+                gamePanel.ui.commandNumber--;
+                if(gamePanel.ui.commandNumber<0)
+                {
+                    gamePanel.ui.commandNumber=1;
+                }
+
+            }
+            if(code==KeyEvent.VK_DOWN)
+            {
+                gamePanel.ui.commandNumber++;
+                if(gamePanel.ui.commandNumber>1)
+                {
+                    gamePanel.ui.commandNumber=0;
+                }
+            }
+            if(code==KeyEvent.VK_ENTER)
+            {
+
+                if(gamePanel.ui.commandNumber==0)
+                {
+
+                }
+                if(gamePanel.ui.commandNumber==1)
+                {
+                    System.exit(0);
+
+                }
+
+            }
+        }
+        // GAME OVER STATE
+        if(gamePanel.gameState == gamePanel.gameOverState)
+        {
+            if(code==KeyEvent.VK_UP)
+            {
+                gamePanel.ui.commandNumber--;
+                if(gamePanel.ui.commandNumber<0)
+                {
+                    gamePanel.ui.commandNumber=1;
+                }
+
+            }
+            if(code==KeyEvent.VK_DOWN)
+            {
+                gamePanel.ui.commandNumber++;
+                if(gamePanel.ui.commandNumber>1)
+                {
+                    gamePanel.ui.commandNumber=0;
+                }
+            }
+            if(code==KeyEvent.VK_ENTER)
+            {
+
+                if(gamePanel.ui.commandNumber==0)
+                {
+
+                }
+                if(gamePanel.ui.commandNumber==1)
+                {
+                    System.exit(0);
+
+                }
+
+            }
+        }
         // TITLE STATE
 
         if(gamePanel.gameState == gamePanel.titleState)
