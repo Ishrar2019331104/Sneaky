@@ -2,6 +2,7 @@ package Entity;
 
 import Main.GamePanel;
 import Main.KeyHandler;
+import Main.MouseHandler;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -13,13 +14,15 @@ public class Player extends Entity
 {
     GamePanel gamePanel;
     KeyHandler keyHandler;
+    MouseHandler mouseHandler;
     public final int screenX;
     public final int screenY;
     public int hasC, hasL, hasO, hasU, hasD;
-    public Player(GamePanel gamePanel, KeyHandler keyHandler)
+    public Player(GamePanel gamePanel, KeyHandler keyHandler, MouseHandler mouseHandler)
     {
         this.gamePanel = gamePanel;
         this.keyHandler = keyHandler;
+        this.mouseHandler = mouseHandler;
         screenX = gamePanel.screenWidth/2 - gamePanel.tileSize/2;
         screenY = gamePanel.screenHeight/2  - gamePanel.tileSize/2;
 

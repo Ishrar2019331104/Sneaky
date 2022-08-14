@@ -34,6 +34,7 @@ public class GamePanel extends JPanel implements Runnable
 
     TileManager tileManager = new TileManager(this);
     KeyHandler keyHandler = new KeyHandler(this);
+    MouseHandler mouseHandler = new MouseHandler(this);
 
     Sound music = new Sound();
     Sound soundEffect = new Sound();
@@ -44,7 +45,7 @@ public class GamePanel extends JPanel implements Runnable
     public UI ui = new UI(this);
     Thread gameThread;
 
-    public Player player = new Player(this, keyHandler);
+    public Player player = new Player(this, keyHandler,mouseHandler);
     public SuperObject obj[] = new SuperObject[30];
 
     // GAME STATE
@@ -63,7 +64,7 @@ public class GamePanel extends JPanel implements Runnable
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setDoubleBuffered(true);
         this.setBackground(new Color(4,224,252));
-
+        this.addMouseListener(mouseHandler);
         this.addKeyListener(keyHandler);
         this.setFocusable(true);
 

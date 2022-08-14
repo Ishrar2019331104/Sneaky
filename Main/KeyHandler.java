@@ -49,7 +49,10 @@ public class KeyHandler implements KeyListener
 
                 if(gamePanel.ui.commandNumber==0)
                 {
-
+//                    gamePanel.gameState = gamePanel.playState;
+//                    gamePanel.playMusic(5);
+//                    gamePanel.setupGame();
+//                    gamePanel.startGameThread();
                 }
                 if(gamePanel.ui.commandNumber==1)
                 {
@@ -84,7 +87,10 @@ public class KeyHandler implements KeyListener
 
                 if(gamePanel.ui.commandNumber==0)
                 {
-
+//                    gamePanel.gameState = gamePanel.playState;
+//                    gamePanel.playMusic(5);
+//                    gamePanel.setupGame();
+//                    gamePanel.startGameThread();
                 }
                 if(gamePanel.ui.commandNumber==1)
                 {
