@@ -27,12 +27,12 @@ public class AssetSetter{
         gamePanel.obj[2].worldY = 6 * gamePanel.tileSize;
 
         gamePanel.obj[3] = new D();
-        gamePanel.obj[3].worldX = 39 * gamePanel.tileSize;
-        gamePanel.obj[3].worldY = 7 * gamePanel.tileSize;
+        gamePanel.obj[3].worldX = 38 * gamePanel.tileSize;
+        gamePanel.obj[3].worldY = 25 * gamePanel.tileSize;
 
         gamePanel.obj[4] = new C();
-        gamePanel.obj[4].worldX = 23 * gamePanel.tileSize;
-        gamePanel.obj[4].worldY = 18 * gamePanel.tileSize;
+        gamePanel.obj[4].worldX = 19 * gamePanel.tileSize;
+        gamePanel.obj[4].worldY = 13 * gamePanel.tileSize;
 
         gamePanel.obj[5] = new Acid();
         gamePanel.obj[5].worldX = 37 * gamePanel.tileSize;
@@ -44,15 +44,15 @@ public class AssetSetter{
 
         gamePanel.obj[7] = new F();
         gamePanel.obj[7].worldX = 9 * gamePanel.tileSize;
-        gamePanel.obj[7].worldY = 31 * gamePanel.tileSize;
+        gamePanel.obj[7].worldY = 32 * gamePanel.tileSize;
 
         gamePanel.obj[8] = new G();
         gamePanel.obj[8].worldX = 33 * gamePanel.tileSize;
         gamePanel.obj[8].worldY = 35 * gamePanel.tileSize;
 
         gamePanel.obj[9] = new L();
-        gamePanel.obj[9].worldX = 43 * gamePanel.tileSize;
-        gamePanel.obj[9].worldY = 32 * gamePanel.tileSize;
+        gamePanel.obj[9].worldX = 36 * gamePanel.tileSize;
+        gamePanel.obj[9].worldY = 14 * gamePanel.tileSize;
 
         gamePanel.obj[10] = new Insect();
         gamePanel.obj[10].worldX = 43 * gamePanel.tileSize;
@@ -75,12 +75,12 @@ public class AssetSetter{
         gamePanel.obj[14].worldY = 1 * gamePanel.tileSize;
 
         gamePanel.obj[15] = new U();
-        gamePanel.obj[15].worldX = 10 * gamePanel.tileSize;
+        gamePanel.obj[15].worldX = 2 * gamePanel.tileSize;
         gamePanel.obj[15].worldY = 19 * gamePanel.tileSize;
 
         gamePanel.obj[16] = new Acid();
-        gamePanel.obj[16].worldX = 27 * gamePanel.tileSize;
-        gamePanel.obj[16].worldY = 39 * gamePanel.tileSize;
+        gamePanel.obj[16].worldX = 39 * gamePanel.tileSize;
+        gamePanel.obj[16].worldY = 7  * gamePanel.tileSize;
 
         gamePanel.obj[17] = new K();
         gamePanel.obj[17].worldX = 23 * gamePanel.tileSize;
@@ -116,7 +116,11 @@ public class AssetSetter{
 
         gamePanel.obj[25] = new X();
         gamePanel.obj[25].worldX = 5 * gamePanel.tileSize;
-        gamePanel.obj[25].worldY = 31 *gamePanel.tileSize;
+        gamePanel.obj[25].worldY = 30 *gamePanel.tileSize;
+
+        gamePanel.obj[26] = new Acid();
+        gamePanel.obj[26].worldX = 38 * gamePanel.tileSize;
+        gamePanel.obj[26].worldY = 14 * gamePanel.tileSize;
 
 
 
