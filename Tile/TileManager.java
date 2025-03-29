@@ -15,9 +15,9 @@ public class TileManager
     public Tile[] tile;
     public int mapTileNum[][];
 
-    public TileManager(GamePanel gamePanel)
+    public TileManager(GamePanel gp)
     {
-        this.gamePanel = gamePanel;
+        gamePanel = gp;
         tile = new Tile[10];
         mapTileNum = new int[gamePanel.maxWorldCol][gamePanel.maxWorldRow];
         getTileImage();
